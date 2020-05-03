@@ -79,6 +79,9 @@ const App = () => {
   // Reorder a list, with startIndex as previous position and endIndex as new position
   const reorder = ({ list, startIndex, endIndex }) => {
     const result = Array.from(list);
+    console.log(result);
+    console.log(startIndex);
+    console.log(endIndex);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
 
@@ -102,7 +105,7 @@ const App = () => {
     // Generate reordered list
     const reorderedItems = reorder({
       list: currentItems,
-      strartIndex: result.source.index,
+      startIndex: result.source.index,
       endIndex: result.destination.index,
     });
 
@@ -343,19 +346,28 @@ const ModalWelcome = ({ setShowModalWelcome }) => {
         <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
       </div>
 
-      <div className="bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl transform transition-all sm:max-w-sm sm:w-full sm:p-6">
+      <div className="bg-white rounded-lg px-4 pb-4 pt-0 overflow-hidden shadow-xl transform transition-all sm:max-w-sm sm:w-full sm:px-6 sm:pb-6">
         <div>
-          <div className="w-full flex">
+          <div className="w-full flex pt-2">
             {pages.map((item, index) => (
               <div
-                className={`w-full h-1 rounded-lg inline-block 
+                onClick={() => {
+                  if (index === pageIndex) return;
+                  setPageIndex(index);
+                }}
+                key={index}
+                className={`w-full py-3`}
+              >
+                <span
+                  className={`h-1 w-full rounded-lg inline-block 
               ${index === 0 ? "" : "ml-2"}
               ${index === pageIndex ? "bg-gray-900" : "bg-gray-300"}
               `}
-              />
+                ></span>
+              </div>
             ))}
           </div>
-          <div className="text-center mt-8 sm:mt-8">
+          <div className="text-center mt-3">
             <span className="w-10 h-10 inline-block">
               <ScaleIcon />
             </span>
@@ -419,9 +431,9 @@ const ModalWelcome = ({ setShowModalWelcome }) => {
 const TrashIcon = () => (
   <svg
     fill="none"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    stroke-width="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
     stroke="currentColor"
     viewBox="0 0 24 24"
   >
@@ -445,9 +457,9 @@ const ScaleIcon = () => (
 const YinIcon = () => (
   <svg
     fill="none"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    stroke-width="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
     stroke="currentColor"
     viewBox="0 0 24 24"
   >
@@ -458,9 +470,9 @@ const YinIcon = () => (
 const YangIcon = () => (
   <svg
     fill="none"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    stroke-width="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
     stroke="currentColor"
     viewBox="0 0 24 24"
   >
@@ -471,9 +483,9 @@ const YangIcon = () => (
 const VerticalDotsIcon = () => (
   <svg
     fill="none"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    stroke-width="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
     stroke="currentColor"
     viewBox="0 0 24 24"
   >
