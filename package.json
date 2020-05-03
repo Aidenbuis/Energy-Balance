@@ -7,10 +7,15 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
+    "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "tailwindcss": "^1.4.4"
   },
   "scripts": {
+    "build:tailwind": "tailwindcss build src/css/tailwind.css -o src/css/tailwind.generated.css",
+    "prestart": "npm run build:tailwind",
+    "prebuild": "npm run build:tailwind",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
