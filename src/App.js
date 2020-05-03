@@ -7,17 +7,11 @@ import "./css/tailwind.generated.css";
 // Application Component
 
 const App = () => {
-  // Get local storage token
-  const lsModalWelcomeKey = process.env.REACT_APP_LS_KEY_MODAL_WELCOME;
-  const lsModalWelcomeIsSet = localStorage.getItem(lsModalWelcomeKey);
-
   // Set state
   const [yinYangValue, setYinYangValue] = React.useState("");
   const [yin, setYin] = React.useState([]);
   const [yang, setYang] = React.useState([]);
-  const [showModalWelcome, setShowModalWelcome] = React.useState(
-    !!lsModalWelcomeIsSet
-  );
+  const [showModalWelcome, setShowModalWelcome] = React.useState(true);
 
   // Set References
   const yinYangValueRef = React.useRef();
@@ -304,15 +298,6 @@ const App = () => {
 };
 
 const ModalWelcome = ({ setShowModalWelcome }) => {
-  const lsModalWelcomeKey = process.env.REACT_APP_LS_KEY_MODAL_WELCOME;
-  const lsModalWelcomeIsSet = localStorage.getItem(lsModalWelcomeKey);
-
-  // If there is no Local Storage value on the key, we set it when the component mounts
-  React.useEffect(() => {
-    if (lsModalWelcomeIsSet) return;
-    localStorage.setItem(lsModalWelcomeKey, true);
-  }, []);
-
   // Set state for navigation
   const [pageIndex, setPageIndex] = React.useState(0);
   const pages = ["Welcome", "Instructions"];
