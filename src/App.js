@@ -400,7 +400,7 @@ const ModalWelcome = ({ setShowModalWelcome }) => {
                   column is what costs energy (yang). Add items to the white
                   column using the moon button or by pressing the '-' key. Add
                   items to the black column using the sun button or by pressing
-                  the '+' key.
+                  the '+' key. You can reorder the items by dragging them.
                 </p>
               </div>
             </div>
